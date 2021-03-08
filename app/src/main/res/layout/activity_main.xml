@@ -19,45 +19,35 @@
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/incrementButton"
+                android:id="@+id/buyProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:backgroundTint="@color/orange"
-                android:text="+" />
+                android:text="Buy" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/decrementButton"
+                android:id="@+id/sellProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:backgroundTint="@color/green_old"
-                android:text="-" />
+                android:text="Sell" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/resetButton"
+                android:id="@+id/historyProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:backgroundTint="@color/red_old"
-                android:text="RESET" />
+                android:text="History" />
 
         </LinearLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/resultText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textAlignment="center"
-            android:textSize="34sp" />
     </LinearLayout>
 
 
