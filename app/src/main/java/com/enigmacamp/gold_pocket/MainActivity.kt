@@ -8,32 +8,43 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var buyFragment: BuyFragment
-    lateinit var sellFragment: SellFragment
+    var balance: Int = 0
+
+    lateinit var balanceFragment: BalanceFragment
+    lateinit var transactionFragment: TransactionFragment
     lateinit var historyFragment: HistoryFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        buyProduct.setOnClickListener(this)
-        sellProduct.setOnClickListener(this)
-        historyProduct.setOnClickListener(this)
-        buyFragment = BuyFragment()
-        sellFragment = SellFragment()
+        balanceButton.setOnClickListener(this)
+        transactionButton.setOnClickListener(this)
+        historyButton.setOnClickListener(this)
+        balanceFragment = BalanceFragment()
+        transactionFragment = TransactionFragment()
         historyFragment = HistoryFragment()
-        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, buyFragment)
-            .commit()
+    }
+
+    fun handleSell(stock: Int) {
+        balance -= stock
+        balanceFragment.updateBalance(balance)
+    }
+
+    fun handleBuy(stock: Int) {
+        balance += stock
+        balanceFragment.updateBalance(balance)
+
     }
 
     override fun onClick(v: View?) {
         when(v) {
-            buyProduct -> {
-                switchFragment(buyFragment)
+            balanceButton -> {
+                switchFragment(balanceFragment)
             }
-            sellProduct -> {
-                switchFragment(sellFragment)
+            transactionButton -> {
+                switchFragment(transactionFragment)
             }
-            historyProduct -> {
+            historyButton -> {
                 switchFragment(historyFragment)
             }
         }
