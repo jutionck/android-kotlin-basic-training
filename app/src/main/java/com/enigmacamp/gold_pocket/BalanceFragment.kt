@@ -1,16 +1,18 @@
 package com.enigmacamp.gold_pocket
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
+import com.enigmacamp.gold_pocket.viewmodel.PocketViewModel
 import kotlinx.android.synthetic.main.fragment_balance.*
 
-class BalanceFragment(var balance: Int = 0) : Fragment() {
+class BalanceFragment : Fragment() {
 
+    lateinit var pocketViewModel: PocketViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,18 +23,19 @@ class BalanceFragment(var balance: Int = 0) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        pocketViewModel = ViewModelProviders.of(requireActivity()).get(PocketViewModel::class.java)
         return inflater.inflate(R.layout.fragment_balance, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.i("BALANCE FRAGMENT", activity.toString())
-        balanceTextView.text = balance.toString()
+        balanceTextView.text = pocketViewModel.balance.toString()
     }
 
-    fun updateBalance(balance: Int) {
-        this.balance = balance
-        balanceTextView?.text = this.balance.toString()
-    }
+//    fun updateBalance(balance: Int) {
+//        this.balance = balance
+//        balanceTextView?.text = this.balance.toString()
+//    }
 
 }

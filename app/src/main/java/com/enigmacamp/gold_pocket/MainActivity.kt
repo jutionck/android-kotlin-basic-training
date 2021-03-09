@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
+import com.enigmacamp.gold_pocket.viewmodel.PocketViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener, TransactionHandler {
-
-    var balance: Int = 0
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var balanceFragment: BalanceFragment
     lateinit var transactionFragment: TransactionFragment
@@ -22,19 +23,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TransactionHandl
         transactionButton.setOnClickListener(this)
         historyButton.setOnClickListener(this)
         balanceFragment = BalanceFragment()
-        transactionFragment = TransactionFragment(this)
+        transactionFragment = TransactionFragment()
         historyFragment = HistoryFragment()
-    }
-
-    override fun handleSell(stock: Int) {
-        balance -= stock
-        balanceFragment.updateBalance(balance)
-    }
-
-   override fun handleBuy(stock: Int) {
-        balance += stock
-        balanceFragment.updateBalance(balance)
-
     }
 
     override fun onClick(v: View?) {

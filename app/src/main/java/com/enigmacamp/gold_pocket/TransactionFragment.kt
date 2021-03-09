@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
+import com.enigmacamp.gold_pocket.viewmodel.PocketViewModel
 import kotlinx.android.synthetic.main.fragment_balance.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
 
-class TransactionFragment(var transactionHandler: TransactionHandler? = null) : Fragment(), View.OnClickListener {
+class TransactionFragment : Fragment(), View.OnClickListener {
+
+    lateinit var pocketViewModel: PocketViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,18 +31,18 @@ class TransactionFragment(var transactionHandler: TransactionHandler? = null) : 
         super.onViewCreated(view, savedInstanceState)
         sellButton.setOnClickListener(this)
         buyButton.setOnClickListener(this)
+        pocketViewModel = ViewModelProviders.of(requireActivity()).get(PocketViewModel::class.java)
     }
 
     override fun onClick(v: View?) {
         when(v) {
             sellButton -> {
-                transactionHandler?.handleSell(textInputGram.text.toString().toInt())
+                pocketViewModel.handleDecrement(textInputGram.text.toString().toInt())
             }
 
             buyButton -> {
-                transactionHandler?.handleBuy(textInputGram.text.toString().toInt())
+                pocketViewModel.handleIncrement(textInputGram.text.toString().toInt())
             }
         }
     }
-
 }
