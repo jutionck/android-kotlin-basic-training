@@ -1,12 +1,13 @@
 package com.enigmacamp.gold_pocket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, TransactionHandler {
 
     var balance: Int = 0
 
@@ -21,16 +22,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         transactionButton.setOnClickListener(this)
         historyButton.setOnClickListener(this)
         balanceFragment = BalanceFragment()
-        transactionFragment = TransactionFragment()
+        transactionFragment = TransactionFragment(this)
         historyFragment = HistoryFragment()
     }
 
-    fun handleSell(stock: Int) {
+    override fun handleSell(stock: Int) {
         balance -= stock
         balanceFragment.updateBalance(balance)
     }
 
-    fun handleBuy(stock: Int) {
+   override fun handleBuy(stock: Int) {
         balance += stock
         balanceFragment.updateBalance(balance)
 
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 switchFragment(transactionFragment)
             }
             historyButton -> {
-                switchFragment(historyFragment)
+                startActivity(Intent(this, SplitScreenActivity::class.java))
             }
         }
     }

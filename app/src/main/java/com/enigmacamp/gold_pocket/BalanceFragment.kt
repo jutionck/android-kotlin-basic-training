@@ -27,11 +27,12 @@ class BalanceFragment(var balance: Int = 0) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.i("BALANCE FRAGMENT", activity.toString())
-        balanceTextView.text = "$balance Gram"
+        balanceTextView.text = balance.toString()
     }
 
     fun updateBalance(balance: Int) {
-       this.balance = balance
+        this.balance = balance
+        balanceTextView?.text = this.balance.toString()
     }
 
 }

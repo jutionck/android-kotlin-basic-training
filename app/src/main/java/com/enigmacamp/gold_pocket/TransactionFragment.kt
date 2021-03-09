@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_balance.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
 
-class TransactionFragment : Fragment(), View.OnClickListener {
+class TransactionFragment(var transactionHandler: TransactionHandler? = null) : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +32,11 @@ class TransactionFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v) {
             sellButton -> {
-                (activity as MainActivity).handleSell(textInputGram.text.toString().toInt())
+                transactionHandler?.handleSell(textInputGram.text.toString().toInt())
             }
 
             buyButton -> {
-                (activity as MainActivity).handleBuy(textInputGram.text.toString().toInt())
+                transactionHandler?.handleBuy(textInputGram.text.toString().toInt())
             }
         }
     }
