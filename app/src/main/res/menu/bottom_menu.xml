@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item android:id="@+id/balanceFragment"
+        android:title="Balance"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_baseline_account_balance_wallet_24"/>
+
+    <item android:id="@+id/transactionFragment"
+        android:title="Transaction"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_baseline_attach_money_24"/>
+
+    <item android:id="@+id/historyFragment"
+        android:title="History"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_baseline_history_24"/>
+
+</menu>
+

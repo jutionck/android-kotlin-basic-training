@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    tools:context=".TransactionFragment">
+    tools:context=".ui.transaction.TransactionFragment">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputGram"
@@ -15,25 +15,30 @@
         android:hint="Input gram"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301"
-        tools:layout_editor_absoluteX="44dp" />
+        app:layout_constraintVertical_bias="0.389"
+        tools:layout_editor_absoluteX="30dp" />
 
-    <Button
-        android:id="@+id/sellButton"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buyButton"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="99dp"
-        android:text="SELL"
-        app:layout_constraintStart_toStartOf="@+id/textInputGram"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/green_old"
+        android:text="BUY"
+        android:textColor="@color/white"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputGram"
         app:layout_constraintTop_toBottomOf="@+id/textInputGram" />
 
-    <Button
-        android:id="@+id/buyButton"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sellButton"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="99dp"
-        android:text="BUY"
-        app:layout_constraintEnd_toEndOf="@+id/textInputGram"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/orange"
+        android:text="SELL"
+        app:cornerRadius="80dp"
+        app:layout_constraintStart_toStartOf="@+id/textInputGram"
         app:layout_constraintTop_toBottomOf="@+id/textInputGram" />
 
 

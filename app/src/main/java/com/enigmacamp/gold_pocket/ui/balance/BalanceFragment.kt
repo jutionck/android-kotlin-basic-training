@@ -1,4 +1,4 @@
-package com.enigmacamp.gold_pocket
+package com.enigmacamp.gold_pocket.ui.balance
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.enigmacamp.gold_pocket.R
 import com.enigmacamp.gold_pocket.viewmodel.PocketViewModel
 import kotlinx.android.synthetic.main.fragment_balance.*
 

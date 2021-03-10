@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 class PocketViewModel: ViewModel() {
 
     var balance: MutableLiveData<Int> = MutableLiveData(0)
+
     fun handleIncrement(increment: Int) {
         balance.postValue(balance.value?.plus(increment))
     }
