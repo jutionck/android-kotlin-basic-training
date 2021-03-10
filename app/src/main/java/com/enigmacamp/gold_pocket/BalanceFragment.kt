@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.enigmacamp.gold_pocket.viewmodel.PocketViewModel
 import kotlinx.android.synthetic.main.fragment_balance.*
@@ -30,7 +31,11 @@ class BalanceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.i("BALANCE FRAGMENT", activity.toString())
-        balanceTextView.text = pocketViewModel.balance.toString()
+        val balanceObserver: Observer<Int> = Observer {
+            balanceTextView.text = it.toString()
+        }
+
+        pocketViewModel.balance.observe(viewLifecycleOwner, balanceObserver)
     }
 
 //    fun updateBalance(balance: Int) {
